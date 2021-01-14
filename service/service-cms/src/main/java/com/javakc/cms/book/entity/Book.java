@@ -7,86 +7,107 @@ import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.util.Date;
 
 /**
- * @program: javakc-parent
- * @description:
- * @author: Li xuwen
- * @create: 2021-01-11 20:18
+ * @Program:javakc-parent
+ * @Author:Administrator
+ * @Description:书籍
+ * @Date:2021/1/12 001213:22
  **/
-@Getter
 @Setter
+@Getter
 @Entity
-@Table(name = "cms_book")
+@Table(name="cms_content_book")
 @EntityListeners(AuditingEntityListener.class)
-public class Book {
-    @Id
-    @Column(name = "id")
-    @GeneratedValue(generator = "generator_uuid")
-    @GenericGenerator(name = "generator_uuid", strategy = "uuid")
-    @ApiModelProperty(value = "书籍主键,采用hibernate的uuid生成32位字符串")
-    private String id;
+public class Book
+    {
+        @Id
+        @Column
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        @ApiModelProperty(value="书籍主键")
+        private Integer id;
 
-    @Column(name = "book_name")
-    @ApiModelProperty(value = "书名")
-    private String bookName;
+        @Column(name="book_name")
+        @ApiModelProperty(value="书名")
+        private String bookName;
 
-    @Column(name = "author")
-    @ApiModelProperty(value = "作者")
-    private String author;
+        @Column(name="author")
+        @ApiModelProperty(value="作者")
+        private String author;
 
-    @Column(name = "first_sort")
-    @ApiModelProperty(value = "一级分类")
-    private String firstSort ;
+        @Column(name="level2_id")
+        @ApiModelProperty(value="二级分类")
+        private Integer level2Id;
 
-    @Column(name = "second_sort")
-    @ApiModelProperty(value = "二级分类")
-    private String secondSort;
+        @Column(name="copyright_id")
+        @ApiModelProperty(value="版本")
+        private Integer copyrightId;
 
-    @Column(name = "is_serialize")
-    @ApiModelProperty(value = "是否连载 1是 0否")
-    private int serialize;
+        @Column(name="is_serialize")
+        @ApiModelProperty(value="是否连载")
+        private Byte isSerialize;
 
-    @Column(name = "word_number")
-    @ApiModelProperty(value = "总字数")
-    private int wordNumber;
+        @Column(name="is_original")
+        @ApiModelProperty(value="是否原创")
+        private Byte isOriginal;
 
-    @Column(name = "is_status")
-    @ApiModelProperty(value = "是否上线 1是 0否")
-    private int status;
+        @Column(name="grant_start_time")
+        @ApiModelProperty(value="授权开始时间",example="2021-12-12 13:32:00")
+        private Date grantStartTime;
 
-    @Column(name = "is_free")
-    @ApiModelProperty(value = "全本收费 1是 0否")
-    private int free;
+        @Column(name="grant_end_time")
+        @ApiModelProperty(value="授权结束时间",example="2021-12-12 13:34:00")
+        private Date grantEndTime;
 
-    @Column(name = "start_time")
-    @ApiModelProperty(value = "授权开始时间")
-    private String startTime;
+        @Column(name="introduction")
+        @ApiModelProperty(value="简介")
+        private String introduction;
 
-    @Column(name = "end_time")
-    @ApiModelProperty(value = "授权结束时间")
-    private String endTime;
+        @Column(name="book_cover")
+        @ApiModelProperty(value="书封")
+        private String bookCover;
 
-    @Column(name = "is_original")
-    @ApiModelProperty(value = "是否原创 1是 0否")
-    private int original;
+        @Column(name="word_number")
+        @ApiModelProperty(value="字数")
+        private Integer wordNumber;
 
+        @Column(name="is_online")
+        @ApiModelProperty(value="状态")
+        private Byte isOnline;
 
-    @CreatedDate
-    @JsonFormat(pattern = "yyyy-MM-dd HH-mm-ss", timezone = "GMT+8")
-    @Column(name = "gmt_create",nullable = false,updatable = false)
-    @ApiModelProperty(value = "创建时间", example = "2020-12-12 9:00:00")
-    private Date gmtCreate;
+        @Column(name="is_charge")
+        @ApiModelProperty(value="全本收费")
+        private Byte isCharge;
 
-    @LastModifiedDate
-    @JsonFormat(pattern = "yyyy-MM-dd HH-mm-ss", timezone = "GMT+8")
-    @Column(name = "gmt_modified",nullable = false,insertable = false)
-    @ApiModelProperty(value = "更新时间", example = "2020-12-12 9:00:00")
-    private Date gmtModified;
+        @Column(name="revision")
+        @ApiModelProperty(value="乐观锁")
+        private Integer revision;
+
+        @Column(name="created_by")
+        @ApiModelProperty(value="创建人")
+        private String createdBy;
+
+        @CreatedDate
+        @JsonFormat(pattern = "yyyy-MM-dd HH-mm-ss", timezone = "GMT+8")
+        @Column(name = "gmt_created",nullable = false,updatable = false)
+        @ApiModelProperty(value = "创建时间", example = "2020-12-12 9:00:00")
+        private Date gmtCreated;
+
+        @Column(name="updated_by")
+        @ApiModelProperty(value="更新人")
+        private String updatedBy;
+
+        @LastModifiedDate
+        @JsonFormat(pattern = "yyyy-MM-dd HH-mm-ss", timezone = "GMT+8")
+        @Column(name = "gmt_modified",nullable = false,insertable = false)
+        @ApiModelProperty(value = "更新时间", example = "2020-12-12 9:00:00")
+        private Date gmtModified;
 }
+
+

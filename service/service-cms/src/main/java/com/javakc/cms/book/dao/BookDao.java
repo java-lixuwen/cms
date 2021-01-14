@@ -1,9 +1,8 @@
 package com.javakc.cms.book.dao;
 
 import com.javakc.cms.book.entity.Book;
+
 import com.javakc.commonutils.jpa.base.dao.BaseDao;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.repository.NoRepositoryBean;
 
 /**
  * @program: javakc-parent

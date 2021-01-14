@@ -2,13 +2,13 @@ package com.javakc.cms.book.service;
 
 import com.javakc.cms.book.dao.BookDao;
 import com.javakc.cms.book.entity.Book;
+
 import com.javakc.cms.book.vo.BookQuery;
 import com.javakc.commonutils.jpa.base.service.BaseService;
 import com.javakc.commonutils.jpa.dynamic.SimpleSpecificationBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -21,7 +21,7 @@ import java.util.List;
  * @create: 2021-01-11 20:18
  **/
 @Service
-public class BookService extends BaseService<BookDao,Book> {
+public class BookService extends BaseService<BookDao, Book> {
 
     @Autowired
     private BookDao bookDao;
