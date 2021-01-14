@@ -11,6 +11,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
  * @author: Li xuwen
  * @create: 2021-01-11 21:37
  **/
+// XZP
 @SpringBootApplication
 @ComponentScan(basePackages = {"com.javakc"})
 @EnableJpaAuditing
