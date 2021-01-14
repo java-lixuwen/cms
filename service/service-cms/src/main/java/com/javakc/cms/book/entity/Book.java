@@ -33,9 +33,50 @@ public class Book {
     @ApiModelProperty(value = "书籍主键,采用hibernate的uuid生成32位字符串")
     private String id;
 
-    @Column(name = "title")
+    @Column(name = "book_name")
     @ApiModelProperty(value = "书名")
-    private String title;
+    private String bookName;
+
+    @Column(name = "author")
+    @ApiModelProperty(value = "作者")
+    private String author;
+
+    @Column(name = "first_sort")
+    @ApiModelProperty(value = "一级分类")
+    private String firstSort ;
+
+    @Column(name = "second_sort")
+    @ApiModelProperty(value = "二级分类")
+    private String secondSort;
+
+    @Column(name = "is_serialize")
+    @ApiModelProperty(value = "是否连载 1是 0否")
+    private int serialize;
+
+    @Column(name = "word_number")
+    @ApiModelProperty(value = "总字数")
+    private int wordNumber;
+
+    @Column(name = "is_status")
+    @ApiModelProperty(value = "是否上线 1是 0否")
+    private int status;
+
+    @Column(name = "is_free")
+    @ApiModelProperty(value = "全本收费 1是 0否")
+    private int free;
+
+    @Column(name = "start_time")
+    @ApiModelProperty(value = "授权开始时间")
+    private String startTime;
+
+    @Column(name = "end_time")
+    @ApiModelProperty(value = "授权结束时间")
+    private String endTime;
+
+    @Column(name = "is_original")
+    @ApiModelProperty(value = "是否原创 1是 0否")
+    private int original;
+
 
     @CreatedDate
     @JsonFormat(pattern = "yyyy-MM-dd HH-mm-ss", timezone = "GMT+8")

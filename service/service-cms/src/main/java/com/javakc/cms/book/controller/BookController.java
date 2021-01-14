@@ -22,6 +22,7 @@ import java.util.Map;
 @Api(tags = "书籍管理")
 @RestController
 @RequestMapping("/cms/book")
+@CrossOrigin
 public class BookController {
 
     @Autowired
@@ -39,7 +40,7 @@ public class BookController {
 
     @ApiOperation("根据条件进行分页查询 - 书籍管理")
     @PostMapping("{pageNo}/{pageSize}")
-     public APICODE pageBook(BookQuery bookQuery, @PathVariable Integer pageNo, @PathVariable Integer pageSize){
+     public APICODE pageBook(@RequestBody(required = false) BookQuery bookQuery, @PathVariable Integer pageNo, @PathVariable Integer pageSize){
         /// 调用 service 中的分页查询方法
         Page<Book> page = bookService.pagebook(bookQuery,pageNo,pageSize);
         long totalElements =page.getTotalElements();

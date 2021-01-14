@@ -10,7 +10,10 @@ import lombok.Data;
  **/
 @Data
 public class BookQuery {
-      private  String title;
+      private  String bookName;
+      private  String beginDate;
+      private String endDate;
+
 //    private  String author;
 //    private  String level2_id;
 //    private  int copyright_id;

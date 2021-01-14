@@ -83,8 +83,14 @@ public class BookService extends BaseService<BookDao,Book> {
          * !null表示 is not null
          */
         SimpleSpecificationBuilder<Book> simpleSpecificationBuilder = new SimpleSpecificationBuilder<>();
-        if (!StringUtils.isEmpty(bookQuery.getTitle())) {
-            simpleSpecificationBuilder.and("title", ":", bookQuery.getTitle());
+        if (!StringUtils.isEmpty(bookQuery.getBookName())) {
+            simpleSpecificationBuilder.and("bookName", ":", bookQuery.getBookName());
+        }
+        if (!StringUtils.isEmpty(bookQuery.getBeginDate())){
+            simpleSpecificationBuilder.and("startTime","ge",bookQuery.getBeginDate());
+        }
+        if (!StringUtils.isEmpty(bookQuery.getEndDate())){
+            simpleSpecificationBuilder.and("startTime","lt",bookQuery.getEndDate());
         }
         Page page = bookDao.findAll(simpleSpecificationBuilder.getSpecification(), PageRequest.of(pageNo - 1, pageSize));
         return page;
